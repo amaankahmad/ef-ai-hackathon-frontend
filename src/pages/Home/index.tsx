@@ -56,7 +56,7 @@ const HomePage = () => {
             fileInputRef.current.click();
           }}
         >
-          Get started
+          Get started with Molespec
         </Button>
       </div>
     </RootPage>
