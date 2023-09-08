@@ -11,6 +11,7 @@ import AddInfoPage from "../pages/Additional Questions";
 import AnalysisPage from "../pages/Analysis";
 import ConfirmationPage from "../pages/Confirmation";
 import NoCTAPage from "../pages/No CTA";
+import ClinicianPage from "../pages/Clinician view";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,16 @@ const AppRoutes = () => {
       <Route path="/analysis" element={<AnalysisPage />} />
       <Route path="/negative" element={<NoCTAPage />} />
       <Route path="/error" element={<Error />} />
+      <Route
+        path="/clinician"
+        element={
+          <ClinicianPage
+            capturedImage={undefined}
+            classificationScore={undefined}
+            additionalInfo={undefined}
+          />
+        }
+      />
       <Route path="/coming-soon" element={<ComingSoonPage />} />
     </Routes>
   );

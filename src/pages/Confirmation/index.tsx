@@ -67,6 +67,13 @@ const ConfirmationPage = () => {
         >
           Add to Calendar
         </Button>
+        <Button
+          onClick={() => navigate("/clinician")}
+          className="mt-36"
+          style={{ backgroundColor: "#3296BC" }}
+        >
+          Want to see the Clinician view?
+        </Button>
       </div>
     </RootPage>
   );

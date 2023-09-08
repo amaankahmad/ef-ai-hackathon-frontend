@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import RootPage from "../root";
 import { Button, TextInput } from "flowbite-react";
+import axios from "axios";
 
 export function formTextField(
   label: any,
@@ -61,7 +62,7 @@ const AddInfoPage = () => {
     setFormData({ ...formData, [field]: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const {
       moleLocation,
       familyHistory,
@@ -69,6 +70,7 @@ const AddInfoPage = () => {
       moleChange,
       moleSensation,
     } = formData;
+
     if (
       !moleLocation ||
       !familyHistory ||
@@ -79,10 +81,38 @@ const AddInfoPage = () => {
       setError("All fields must be filled.");
       return;
     }
+
     setError(null);
     console.log("Submitting data:", formData);
-    navigate("/booking");
-    // Navigate or perform other actions
+
+    try {
+      // Prepare the data to send to the /pre-inspection endpoint
+      const responses = [
+        // moleLocation,
+        familyHistory,
+        moleDuration,
+        moleChange,
+        moleSensation,
+      ];
+
+      // Make the Axios POST request
+      const response = await axios.post(
+        "http://localhost:8080/pre-inspection",
+        {
+          responses,
+        }
+      );
+
+      // Handle the response
+      if (response.data) {
+        console.log("Received response:", response.data);
+        // You can navigate or perform other actions based on the response
+        navigate("/booking");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error);
+      setError("An error occurred while submitting the data.");
+    }
   };
 
   return (
