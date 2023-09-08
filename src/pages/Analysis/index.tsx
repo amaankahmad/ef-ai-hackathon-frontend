@@ -29,7 +29,7 @@ const AnalysisPage = () => {
   return (
     <RootPage header="home">
       <div className="flex flex-col items-center h-screen">
-        <h1 className="text-4xl font-bold mb-8">Image Analysis</h1>
+        <h1 className="text-4xl font-bold my-8">Image Analysis</h1>
         {imageSrc ? (
           <div className="mt-32 border-4 border-dashed border-gray-400 rounded-lg w-64 h-64 flex items-center justify-center mb-8">
             <img
@@ -55,7 +55,7 @@ const AnalysisPage = () => {
         <div className="flex justify-between">
           <Button
             style={{ borderColor: "#3296BC" }}
-            className="font-bold bg-white border-2 text-[#3296BC] mr-4"
+            className="font-bold bg-white border-2 text-black mr-4"
             onClick={() => {
               fileInputRef.current.click();
             }}
