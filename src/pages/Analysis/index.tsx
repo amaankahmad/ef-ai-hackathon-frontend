@@ -55,7 +55,7 @@ const AnalysisPage = () => {
         <div className="flex justify-between">
           <Button
             style={{ borderColor: "#3296BC" }}
-            className="font-bold bg-white border-2 text-black mr-4"
+            className="font-bold border-2 text-black mr-4"
             onClick={() => {
               fileInputRef.current.click();
             }}
