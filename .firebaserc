@@ -1,5 +1,5 @@
 {
-  "projects": {
-    "default": "molespec-ef-ai-hack"
-  }
+    "projects": {
+        "default": "molespec-ef"
+    }
 }

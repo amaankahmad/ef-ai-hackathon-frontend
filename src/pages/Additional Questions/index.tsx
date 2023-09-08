@@ -81,7 +81,7 @@ const AddInfoPage = () => {
     }
     setError(null);
     console.log("Submitting data:", formData);
-    navigate("/appointment-booking");
+    navigate("/booking");
     // Navigate or perform other actions
   };
 
