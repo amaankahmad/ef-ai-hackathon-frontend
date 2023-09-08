@@ -81,13 +81,14 @@ const AddInfoPage = () => {
     }
     setError(null);
     console.log("Submitting data:", formData);
+    navigate("/appointment-booking");
     // Navigate or perform other actions
   };
 
   return (
     <RootPage header="error">
       <div className="flex flex-col min-h-screen">
-        <h1 className="px-4 py-6 xs:text-3xl text-6xl md:text-8xl font-bold flex items-center text-center">
+        <h1 className="px-4 py-8 xs:text-3xl text-6xl md:text-8xl font-bold flex items-center text-center">
           Some additional questions
         </h1>
         {formTextField(
@@ -142,7 +143,7 @@ const AddInfoPage = () => {
         )}
         <div className="flex justify-end w-full pr-4 pt-4">
           <Button
-            style={{ backgroundColor: "#3296BC" }}
+            style={{ backgroundColor: "#31C48D" }}
             className="font-bold bg-white border-2 text-white"
             onClick={handleSubmit}
           >
