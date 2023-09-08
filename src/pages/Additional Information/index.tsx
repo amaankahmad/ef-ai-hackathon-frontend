@@ -107,7 +107,7 @@ const AddInfoPage = () => {
 
       // Make the Axios POST request
       const response = await axios.post(
-        "http://localhost:8080/pre-inspection",
+        "https://flask-app-hrkoys2nxa-uw.a.run.app/pre-inspection",
         {
           responses,
         }

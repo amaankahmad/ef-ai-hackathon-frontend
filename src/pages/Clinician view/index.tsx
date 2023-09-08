@@ -48,7 +48,7 @@ const ClinicianPage = () => {
 
         // Send the POST request to the /final-diagnosis endpoint
         const response = await axios.post(
-          "http://localhost:8080/pre-inspection",
+          "https://flask-app-hrkoys2nxa-uw.a.run.app/pre-inspection",
           postData
         );
 
