@@ -1,5 +1,6 @@
+import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import RootPage from "../root";
 import { Button } from "flowbite-react";
 
@@ -7,6 +8,8 @@ const AnalysisPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +27,32 @@ const AnalysisPage = () => {
     if (file) {
       navigate("/analysis", { state: { capturedImage: file } });
     }
+  };
+
+  const analyzeImage = async () => {
+    setLoading(true);
+    try {
+      let formData = new FormData();
+      formData.append("file", location.state.capturedImage);
+      const res = await axios.post("http://127.0.0.1:8080/predict", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setMessage(
+        `Image shows ${(res.data * 100).toFixed(2)}% chance of cancer`
+      );
+      if (res.data > 0.9) {
+        navigate("/additional-info");
+      } else if (res.data > 0.5) {
+        navigate("/tracking");
+      } else {
+        navigate("/negative");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
   };
 
   return (
@@ -65,13 +94,13 @@ const AnalysisPage = () => {
           <Button
             style={{ backgroundColor: "#3296BC" }}
             className="font-bold bg-white border-2 text-white"
-            onClick={() => {
-              console.log("Analysing...");
-            }}
+            onClick={analyzeImage}
+            disabled={loading}
           >
-            Analyse
+            {loading ? "Analysing..." : "Analyse"}
           </Button>
         </div>
+        {message && <p className="mt-4">{message}</p>}
       </div>
     </RootPage>
   );
