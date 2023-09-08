@@ -34,11 +34,15 @@ const AnalysisPage = () => {
     try {
       let formData = new FormData();
       formData.append("file", location.state.capturedImage);
-      const res = await axios.post("http://127.0.0.1:8080/predict", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.post(
+        "https://flask-app-hrkoys2nxa-uw.a.run.app/predict",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       const nextPageState = {
         capturedImage: location.state.capturedImage,
