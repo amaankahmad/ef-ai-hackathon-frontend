@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Clear npm cache
+        run: npm cache clean --force && npm install --legacy-peer-deps
+#       - run: npm ci
       - run: CI=false npm run build --prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
