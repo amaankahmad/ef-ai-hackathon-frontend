@@ -10,6 +10,7 @@ import RegularTrackingPage from "../pages/Regular Tracking";
 import AddInfoPage from "../pages/Additional Questions";
 import AnalysisPage from "../pages/Analysis";
 import ConfirmationPage from "../pages/Confirmation";
+import NoCTAPage from "../pages/No CTA";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path="/tracking" element={<RegularTrackingPage />} />
       <Route path="/confirmation" element={<ConfirmationPage />} />
       <Route path="/analysis" element={<AnalysisPage />} />
+      <Route path="/negative" element={<NoCTAPage />} />
       <Route path="/error" element={<Error />} />
       <Route path="/coming-soon" element={<ComingSoonPage />} />
     </Routes>
