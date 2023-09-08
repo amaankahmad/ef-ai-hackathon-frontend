@@ -52,7 +52,7 @@ export default function DrawerAppBar(props: Props) {
   return (
     <div className="bg-[#D6EFF5]">
       <Navbar fluid rounded className="bg-[#D6EFF5] px-4">
-        <Navbar.Brand href="https://google.com">
+        <Navbar.Brand href="/">
           {/* <img
           alt="Flowbite React Logo"
           className="mr-3 h-6 sm:h-9"
