@@ -25,7 +25,7 @@ const HomePage = () => {
     const file = e.target.files[0];
     if (file) {
       // Do something with the captured image file, e.g., send it to the server or navigate to another page
-      navigate("/image", { state: { capturedImage: file } });
+      navigate("/analysis", { state: { capturedImage: file } });
     }
   };
 
@@ -51,7 +51,8 @@ const HomePage = () => {
 
         {/* Start Button */}
         <Button
-          className="bg-[#3296BC] mt-24 font-bold"
+          style={{ backgroundColor: "#3296BC" }}
+          className="font-bold"
           onClick={() => {
             fileInputRef.current.click();
           }}

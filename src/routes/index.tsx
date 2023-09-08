@@ -8,7 +8,7 @@ import AppointmentBookingPage from "../pages/Appointment Booking";
 import InspectPage from "../pages/Inspect";
 import RegularTrackingPage from "../pages/Regular Tracking";
 import AddInfoPage from "../pages/Additional Questions";
-import ImageCapturePage from "../pages/Image Capture";
+import AnalysisPage from "../pages/Analysis";
 
 const AppRoutes = () => {
   return (
@@ -18,7 +18,7 @@ const AppRoutes = () => {
       <Route path="/appointment-booking" element={<AppointmentBookingPage />} />
       <Route path="/additional-info" element={<AddInfoPage />} />
       <Route path="/tracking" element={<RegularTrackingPage />} />
-      <Route path="/image" element={<ImageCapturePage />} />
+      <Route path="/analysis" element={<AnalysisPage />} />
       <Route path="/error" element={<Error />} />
       <Route path="/coming-soon" element={<ComingSoonPage />} />
     </Routes>
