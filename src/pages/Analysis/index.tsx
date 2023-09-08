@@ -49,9 +49,9 @@ const AnalysisPage = () => {
         analysisScore: res.data,
       };
 
-      if (res.data > 0.9) {
+      if (res.data >= 0.9) {
         navigate("/additional-info", { state: nextPageState });
-      } else if (res.data > 0.5) {
+      } else if (res.data >= 0.5) {
         navigate("/tracking", { state: nextPageState });
       } else {
         navigate("/negative", { state: nextPageState });
