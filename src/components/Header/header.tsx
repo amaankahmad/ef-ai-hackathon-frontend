@@ -1,10 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import LinkedIn from "../../assets/icons/LinkedIn.png";
-import Twitter from "../../assets/icons/Twitter.png";
-import Mail from "../../assets/icons/Mail.png";
+import { Button, Navbar } from "flowbite-react";
 
 interface Props {
   /**
@@ -53,85 +50,32 @@ export default function DrawerAppBar(props: Props) {
   };
 
   return (
-    <div>
-      <header>
-        <nav className="bg-[#E7DFD5] px-4 lg:px-6 pt-6 py-4">
-          <div className="flex flex-wrap justify-between items-center max-w-screen">
-            <a href="https://amaankahmad.com" className="flex items-center">
-              <span className="text-[#121113] font-black text-2xl">
-                amaankahmad
-              </span>
-            </a>
-            <div className="flex items-center md:order-2 ">
-              <a
-                className="flex items-center px-2"
-                href="https://www.linkedin.com/in/amaankahmad/"
-              >
-                <img src={LinkedIn} alt="linkedin" />
-              </a>
-              <a
-                className="flex items-center px-2"
-                href="https://www.twitter.com/amaankahmad/"
-              >
-                <img src={Twitter} alt="twitter" />
-              </a>
-              <a
-                className="flex items-center px-2"
-                href="mailto:amaankahmad@gmail.com"
-              >
-                <img src={Mail} alt="email" />
-              </a>
-            </div>
-            <div
-              className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
-              id="mobile-menu-2"
-            >
-              <ul className="flex flex-col mt-4 font-bold md:flex-row md:space-x-2 lg:space-x-8 md:mt-0">
-                <li>
-                  <button
-                    onClick={() => handleNavigationClick("about-me-section")}
-                    className="block py-2 pr-4 pl-3 text-[#121113] hover:underline hover:font-bold focus:outline-none"
-                  >
-                    about me
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigationClick("pathfinder-section")}
-                    className="block py-2 pr-4 pl-3 text-[#121113] hover:underline hover:font-bold focus:outline-none"
-                  >
-                    pathfinder
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigationClick("podcast-section")}
-                    className="block py-2 pr-4 pl-3 text-[#121113] hover:underline hover:font-bold focus:outline-none"
-                  >
-                    podcast
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigationClick("writing-section")}
-                    className="block py-2 pr-4 pl-3 text-[#121113] hover:underline hover:font-bold focus:outline-none"
-                  >
-                    writing
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollTo("contact-section")}
-                    className="block py-2 pr-4 pl-3 text-[#121113] hover:underline hover:font-bold focus:outline-none"
-                  >
-                    contact
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+    <div className="bg-[#D6EFF5]">
+      <Navbar fluid rounded className="bg-[#D6EFF5] px-4">
+        <Navbar.Brand href="https://google.com">
+          {/* <img
+          alt="Flowbite React Logo"
+          className="mr-3 h-6 sm:h-9"
+          src="/favicon.svg"
+        /> */}
+          <span className="self-center whitespace-nowrap text-xl font-semibold text-black dark:text-white">
+            Molespec
+          </span>
+        </Navbar.Brand>
+        <div className="flex md:order-2 ">
+          <Button className="bg-[#3296BC] font-bold">Get started</Button>
+          {/* <Navbar.Toggle /> */}
+        </div>
+        {/* <Navbar.Collapse>
+        <Navbar.Link active href="#">
+          <p>Home</p>
+        </Navbar.Link>
+        <Navbar.Link href="#">About</Navbar.Link>
+        <Navbar.Link href="#">Services</Navbar.Link>
+        <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link>
+      </Navbar.Collapse> */}
+      </Navbar>
     </div>
   );
 }

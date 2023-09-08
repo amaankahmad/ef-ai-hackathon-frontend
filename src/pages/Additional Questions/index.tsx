@@ -15,7 +15,7 @@ const AddInfoPage = () => {
         </h1>
         <button
           className="px-8 py-4 my-[4%] text-black rounded-full text-lg font-semibold"
-          style={{ backgroundColor: "#BFA98F" }}
+          style={{ backgroundColor: "#FFFFFF" }}
           onClick={() => navigate("/")}
         >
           in the meantime, lets take you home
