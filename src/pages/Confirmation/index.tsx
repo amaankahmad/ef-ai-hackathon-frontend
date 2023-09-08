@@ -1,6 +1,6 @@
 // Import necessary modules and hooks
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import RootPage from "../root";
 import { Button } from "flowbite-react";
 
@@ -14,28 +14,10 @@ const ConfirmationPage = () => {
   const date = location.state?.selectedDate || "Friday, September 8th";
   const time = location.state?.selectedTime || "8:00 AM";
 
-  // State and ref for handling image
-  const [imageSrc, setImageSrc] = useState(null);
-  const fileInputRef = useRef(null);
-
-  // Effect to read the captured image from the location state
-  useEffect(() => {
-    if (location.state && location.state.capturedImage) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImageSrc(reader.result);
-      };
-      reader.readAsDataURL(location.state.capturedImage);
-    }
-  }, [location]);
-
-  // Function to handle image capture and navigate to analysis page
-  const handleCapture = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      navigate("/analysis", { state: { capturedImage: file } });
-    }
-  };
+  // Additional information
+  const imageSrc = location.state?.capturedImage;
+  const analysisScore = location.state?.analysisScore;
+  const preInspectionData = location.state?.preInspectionData;
 
   // Placeholder function for adding event to calendar
   const addToCalendar = () => {
@@ -68,7 +50,17 @@ const ConfirmationPage = () => {
           Add to Calendar
         </Button>
         <Button
-          onClick={() => navigate("/clinician")}
+          onClick={() =>
+            navigate("/clinician", {
+              state: {
+                selectedDate: date,
+                selectedTime: time,
+                capturedImage: imageSrc,
+                analysisMeanalysisScoressage: analysisScore,
+                preInspectionData: preInspectionData,
+              },
+            })
+          }
           className="mt-36"
           style={{ backgroundColor: "#3296BC" }}
         >

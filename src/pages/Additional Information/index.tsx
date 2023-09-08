@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import RootPage from "../root";
@@ -57,6 +57,16 @@ const AddInfoPage = () => {
     moleSensation: "",
   });
   const [error, setError] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
+  const [analysisMessage, setAnalysisMessage] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state) {
+      setImageSrc(location.state.capturedImage);
+      setAnalysisMessage(location.state.analysisMessage);
+    }
+  }, [location]);
 
   const handleInputChange = (e, field) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -107,7 +117,13 @@ const AddInfoPage = () => {
       if (response.data) {
         console.log("Received response:", response.data);
         // You can navigate or perform other actions based on the response
-        navigate("/booking");
+        navigate("/booking", {
+          state: {
+            capturedImage: imageSrc,
+            analysisMessage: analysisMessage,
+            preInspectionData: response.data,
+          },
+        });
       }
     } catch (error) {
       console.error("Error submitting data:", error);

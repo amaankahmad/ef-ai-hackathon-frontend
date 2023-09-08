@@ -39,15 +39,18 @@ const AnalysisPage = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      setMessage(
-        `Image shows ${(res.data * 100).toFixed(2)}% chance of cancer`
-      );
+
+      const nextPageState = {
+        capturedImage: location.state.capturedImage,
+        analysisScore: res.data,
+      };
+
       if (res.data > 0.9) {
-        navigate("/additional-info");
+        navigate("/additional-info", { state: nextPageState });
       } else if (res.data > 0.5) {
-        navigate("/tracking");
+        navigate("/tracking", { state: nextPageState });
       } else {
-        navigate("/negative");
+        navigate("/negative", { state: nextPageState });
       }
     } catch (err) {
       console.error(err);
@@ -84,12 +87,12 @@ const AnalysisPage = () => {
         <div className="flex justify-between">
           <Button
             style={{ borderColor: "#3296BC" }}
-            className="font-bold border-2 text-black mr-4"
+            className="font-bold border-2 bg-white text-black mr-4"
             onClick={() => {
               fileInputRef.current.click();
             }}
           >
-            Retake Image
+            <p className="text-sm text-[#3296BC] font-bold">Retake Image</p>
           </Button>
           <Button
             style={{ backgroundColor: "#3296BC" }}

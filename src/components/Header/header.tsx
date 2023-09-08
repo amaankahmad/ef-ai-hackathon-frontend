@@ -68,7 +68,13 @@ export default function DrawerAppBar(props: Props) {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2 ">
-          <Button style={{ backgroundColor: "#3296BC" }} className="font-bold">
+          <Button
+            style={{ backgroundColor: "#3296BC" }}
+            className="font-bold"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             Get started
           </Button>
           {/* <Navbar.Toggle /> */}

@@ -2,13 +2,26 @@ import React, { useEffect, useState } from "react";
 import { format, addDays, getDaysInMonth } from "date-fns";
 import RootPage from "../root";
 import { Button } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AppointmentBookingPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [availableDates, setAvailableDates] = useState([]);
+  const location = useLocation();
   let navigate = useNavigate();
+
+  const [imageSrc, setImageSrc] = useState(null);
+  const [analysisScore, setAnalysisScore] = useState(null);
+  const [preInspectionData, setPreInspectionData] = useState(null);
+
+  useEffect(() => {
+    if (location.state) {
+      setImageSrc(location.state.capturedImage);
+      setAnalysisScore(location.state.analysisScore);
+      setPreInspectionData(location.state.preInspectionData);
+    }
+  }, [location]);
 
   const daysInMonth = getDaysInMonth(new Date());
   const allDates = Array.from({ length: daysInMonth }, (_, i) =>
@@ -49,6 +62,9 @@ const AppointmentBookingPage = () => {
       state: {
         selectedDate: formattedDate,
         selectedTime: selectedTime,
+        capturedImage: imageSrc,
+        analysisScore: analysisScore,
+        preInspectionData: preInspectionData,
       },
     });
   };
