@@ -50,8 +50,13 @@ export default function DrawerAppBar(props: Props) {
   };
 
   return (
-    <div className="bg-[#D6EFF5]">
-      <Navbar fluid rounded className="bg-[#D6EFF5] px-4">
+    <div style={{ backgroundColor: "#D6EFF5" }}>
+      <Navbar
+        fluid
+        rounded
+        className="px-4"
+        style={{ backgroundColor: "#D6EFF5" }}
+      >
         <Navbar.Brand href="/">
           {/* <img
           alt="Flowbite React Logo"
@@ -63,7 +68,9 @@ export default function DrawerAppBar(props: Props) {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2 ">
-          <Button className="bg-[#3296BC] font-bold">Get started</Button>
+          <Button style={{ backgroundColor: "#3296BC" }} className="font-bold">
+            Get started
+          </Button>
           {/* <Navbar.Toggle /> */}
         </div>
         {/* <Navbar.Collapse>
